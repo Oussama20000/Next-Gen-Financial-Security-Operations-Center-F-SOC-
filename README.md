@@ -1,7 +1,3 @@
-I have compiled all the information into a single, well-structured `README.md` document for you. You can copy and paste this directly into your GitHub repository.
-
------
-
 ### **Next-Gen Financial Security Operations Center (F-SOC)**
 
 ### **Project Description**
@@ -87,7 +83,3 @@ Shuffle uses dedicated apps to connect to **Cortex** and **MISP** via API keys.
 
   * **Cortex:** When a case is created, Shuffle sends IOCs (IPs, hashes, domains) to Cortex for automated analysis using its analyzers (e.g., VirusTotal, AbuseIPDB). The results are then added back to the IRIS case to enrich the alert.
   * **MISP:** MISP is used to proactively search for IOCs related to an alert. The workflow queries MISP through a Shuffle app, and the returned information is used to generate a report within IRIS.
-
------
-
-I will not ask about anything further until you request it. The command `tcpdump` has been remembered with the tag [2025-08-13].
