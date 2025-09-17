@@ -4,11 +4,12 @@ This guide provides the steps to install and configure **Shuffle**, an orchestra
 
 #### **1. Prerequisites**
 
-Ensure your server meets the following requirements before proceeding:
-
-  * A clean server instance with a Linux-based operating system.
-  * **Docker and Docker Compose:** Both must be installed and functional.
-  * **Minimum Resources:** A minimum of **4GB of RAM** must be available.
+    * A clean Ubuntu Server 24 instance.
+    * IP Address: 192.168.1.53
+    * Resource Allocation: 2 vCPUs, 4GB RAM, 100GB HDD
+    * Dependencies: Docker and Docker Compose must be installed on your server.
+    
+Ensure your server meets the following requirements before proceeding
 
 #### **2. System Configuration**
 
