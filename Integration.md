@@ -592,7 +592,13 @@ if rule_id == "92026":
 <img width="336" height="719" alt="image" src="https://github.com/user-attachments/assets/58face2e-4b7f-4309-916d-ef2764f23844" />
 
 6. Create an Alert in Discord
-<img width="334" height="722" alt="image" src="https://github.com/user-attachments/assets/c1a76a0d-6d05-4ac0-aaae-1c490cf871b0" />
+
+$<img width="334" height="722" alt="image" src="https://github.com/user-attachments/assets/c1a76a0d-6d05-4ac0-aaae-1c490cf871b0" />
+
+7. Results
+
+   <img width="1308" height="33" alt="image" src="https://github.com/user-attachments/assets/4a1ea7b9-d89b-41c6-80cf-27e1180c6dd5" />
+
 
 
 
