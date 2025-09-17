@@ -4,10 +4,10 @@ This guide provides the steps to install and configure DFIR IRIS, the incident r
 
 #### **1. Prerequisites**
 
-  * A clean Ubuntu Server 24 instance.
-  * **IP Address:** `192.168.1.57`
-  * **Resource Allocation:** 2 vCPUs, 4GB RAM, 100GB HDD
-  * **Dependencies:** Docker and Docker Compose must be installed on your server.
+    * A clean Ubuntu Server 24 instance.
+    * **IP Address:** `192.168.1.57`
+    * **Resource Allocation:** 2 vCPUs, 4GB RAM, 100GB HDD
+    * **Dependencies:** Docker and Docker Compose must be installed on your server.
 
 #### **2. Installation**
 
