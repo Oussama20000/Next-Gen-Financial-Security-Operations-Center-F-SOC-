@@ -48,6 +48,4 @@ sudo systemctl start suricata
 sudo systemctl status suricata
 ```
 
-You can test the IDS by checking the Suricata logs for any alerts or messages.
-
 <img width="1154" height="230" alt="image" src="https://github.com/user-attachments/assets/0274a6f6-3d23-402a-8658-64911f9b14aa" />
