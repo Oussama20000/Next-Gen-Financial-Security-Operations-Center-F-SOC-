@@ -61,6 +61,8 @@ After the containers are up and running, you can access the web interfaces for i
   * **MISP:** Accessible on `https://192.168.1.55`. The default credentials are `admin@admin.test` with the password `admin`. Be sure to change the password immediately after logging in.
 
     <img width="809" height="157" alt="image" src="https://github.com/user-attachments/assets/20d8a03d-849f-4585-8643-f18334857cc5" />
+    <img width="781" height="515" alt="image" src="https://github.com/user-attachments/assets/cd28d2fe-a617-45ed-9814-f829fdb5613f" />
+
 
 
 #### **4. Create the Cortex Super Administrator**
