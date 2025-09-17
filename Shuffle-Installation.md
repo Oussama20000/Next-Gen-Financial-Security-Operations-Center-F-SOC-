@@ -1,0 +1,53 @@
+Shuffle Installation Guide
+This guide provides the steps to install and configure Shuffle, an orchestration and automation engine, using Docker on a Linux-based system.
+
+1. Prerequisites
+Ensure your server meets the following requirements before proceeding:
+
+A clean server instance with a Linux-based operating system.
+
+Docker and Docker Compose: These must be installed and functional.
+
+Minimum Resources: A minimum of 4GB of RAM must be available.
+
+2. System Configuration
+Before installing Shuffle, configure the system to ensure the database runs smoothly.
+
+Disable Swap: Temporarily disable swap to prevent performance issues with the database.
+
+Bash
+
+sudo swapoff -a
+Configure VM Map Count: Set the vm.max_map_count kernel parameter, which is a requirement for the OpenSearch database used by Shuffle.
+
+Bash
+
+sudo sysctl -w vm.max_map_count=262144
+3. Installation
+Download Shuffle: Clone the official Shuffle repository from GitHub.
+
+Bash
+
+git clone https://github.com/Shuffle/Shuffle.git
+cd Shuffle
+Create Database Directory: Create a dedicated directory for the database and set the correct permissions.
+
+Bash
+
+mkdir shuffle-database
+sudo chown -R 1000:1000 shuffle-database
+Note: If chown returns an error, you may need to add the opensearch user first with sudo useradd opensearch.
+
+Run Docker Compose: Start the installation process by running Docker Compose. The -d flag runs the containers in detached mode.
+
+Bash
+
+docker-compose up -d
+
+<img width="755" height="619" alt="image" src="https://github.com/user-attachments/assets/8890e468-0156-41e6-b7ac-01ebae401e08" />
+
+
+
+
+
+
