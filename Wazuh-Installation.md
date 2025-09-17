@@ -81,3 +81,17 @@ curl -k -u admin:<ADMIN_PASSWORD> https://<WAZUH_INDEXER_IP>:9200
 ```
 
 The output should show details of your Wazuh cluster, confirming that the installation was successful.
+
+To check the status of the services, you can use the following commands:
+
+```bash
+sudo systemctl status wazuh-dashboard
+sudo systemctl status wazuh-manager
+sudo systemctl status wazuh-indexer 
+```
+
+<img width="861" height="225" alt="image" src="https://github.com/user-attachments/assets/705daa82-c89d-444b-b91b-fca62f370212" />
+<img width="810" height="140" alt="image" src="https://github.com/user-attachments/assets/2a8ceaa9-59fe-4710-bada-c38a44ea8d1b" />
+<img width="826" height="127" alt="image" src="https://github.com/user-attachments/assets/cf689e8a-e7ba-40d0-9bae-4674293beab2" />
+
+
