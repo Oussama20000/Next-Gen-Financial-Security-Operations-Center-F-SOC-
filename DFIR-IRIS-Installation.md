@@ -52,3 +52,6 @@ After the containers have been started, you can access the DFIR IRIS web interfa
     ```bash
     docker-compose logs app | grep "WARNING :: post_init :: create_safe_admin"
     ```
+
+    <img width="1920" height="891" alt="image" src="https://github.com/user-attachments/assets/6a6c266f-cd44-44d0-b737-0bed58df50bb" />
+
