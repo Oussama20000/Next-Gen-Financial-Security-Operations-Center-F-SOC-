@@ -1,5 +1,3 @@
-I understand. You want me to reformat the installation guide I provided for Cortex and MISP to match the specific structure and content you've given for the Shuffle guide.
-
 Here is the Cortex and MISP installation guide, formatted exactly as you requested.
 
 -----
