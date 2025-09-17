@@ -43,3 +43,8 @@ Before installing Shuffle, configure the system to ensure the database runs smoo
     ```
 
 <img width="751" height="621" alt="image" src="https://github.com/user-attachments/assets/c706218a-0d58-4498-a4ba-ec979d22a50f" />
+
+
+Detailed documentation is available on the official Shuffle website. (https://shuffler.io/docs/configuration/)
+
+
