@@ -539,6 +539,9 @@ print(first_name)
 
 8. Results
 <img width="548" height="62" alt="image" src="https://github.com/user-attachments/assets/c5a50255-6cf7-4cf0-b8ff-e84d7d58f476" />
+<img width="646" height="564" alt="image" src="https://github.com/user-attachments/assets/4bdbcfe4-d305-4637-95d2-63262345e7cc" />
+
+
 
 
 **V WorkFlow**
@@ -598,6 +601,8 @@ $<img width="334" height="722" alt="image" src="https://github.com/user-attachme
 7. Results
 
    <img width="1308" height="33" alt="image" src="https://github.com/user-attachments/assets/4a1ea7b9-d89b-41c6-80cf-27e1180c6dd5" />
+   <img width="805" height="559" alt="image" src="https://github.com/user-attachments/assets/cba5eb18-f23e-4ab5-a1db-c5558ff425f6" />
+
 
 
 
