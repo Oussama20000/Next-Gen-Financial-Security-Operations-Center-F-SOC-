@@ -4,6 +4,11 @@ This guide provides the steps to install and configure Shuffle, an orchestration
 
 #### **1. Prerequisites**
 
+    * A clean Ubuntu Server 24 instance.
+    * IP Address: 192.168.1.57
+    * Resource Allocation: 2 vCPUs, 4GB RAM, 100GB HDD
+    * Dependencies: Docker and Docker Compose must be installed on your server.
+
 Ensure your server meets the following requirements before proceeding:
 
   * A clean server instance with a Linux-based operating system.
