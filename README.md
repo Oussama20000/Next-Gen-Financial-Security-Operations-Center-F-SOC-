@@ -1,3 +1,4 @@
+<img width="680" height="32" alt="image" src="https://github.com/user-attachments/assets/fcc15532-e430-4a19-9691-29809fec02be" />
 ### **Next-Gen Financial Security Operations Center (F-SOC)**
 
 ### **Project Description**
