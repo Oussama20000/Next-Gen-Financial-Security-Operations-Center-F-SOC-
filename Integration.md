@@ -234,6 +234,15 @@ curl -X POST "https://192.168.1.57/alerts/merge/$create_case_suricata.#.body.dat
 <img width="334" height="725" alt="image" src="https://github.com/user-attachments/assets/987fcb32-cf9b-4229-8cf7-30646976d71a" />
 <img width="330" height="584" alt="image" src="https://github.com/user-attachments/assets/ca19b966-ec75-404c-978c-2f8688e922b6" />
 
+**Results**
+
+<img width="1107" height="206" alt="image" src="https://github.com/user-attachments/assets/91e4233a-fd56-477a-9278-102a817cd5a7" />
+<img width="1194" height="690" alt="image" src="https://github.com/user-attachments/assets/fad0e611-b028-4f3e-9122-d89fef2c380a" />
+<img width="1550" height="755" alt="image" src="https://github.com/user-attachments/assets/0b752f20-7903-458f-b620-9008ffb24a71" />
+<img width="1547" height="751" alt="image" src="https://github.com/user-attachments/assets/d9a2d0ca-bea8-4250-9a19-28763b75713f" />
+
+
+
 
 **II WorkFlow**
 
@@ -355,6 +364,7 @@ curl -X POST "https://192.168.1.57/alerts/merge/$create_case_mimikatz.#.body.dat
   "assets_import_list": []
 }'
 ```
+**Results**
 
 <img width="1197" height="688" alt="image" src="https://github.com/user-attachments/assets/d0d7f9e2-ba9d-4317-851b-f3b232763eb0" />
 <img width="1120" height="217" alt="image" src="https://github.com/user-attachments/assets/ae94ad01-93e3-4c90-aaf7-24848301dd3e" />
