@@ -61,7 +61,6 @@ After the containers are up and running, you can access the web interfaces for i
   * **MISP:** Accessible on `https://192.168.1.55`. The default credentials are `admin@admin.test` with the password `admin`. Be sure to change the password immediately after logging in.
 
     <img width="809" height="157" alt="image" src="https://github.com/user-attachments/assets/20d8a03d-849f-4585-8643-f18334857cc5" />
-    <img width="781" height="515" alt="image" src="https://github.com/user-attachments/assets/cd28d2fe-a617-45ed-9814-f829fdb5613f" />
 
 
 
@@ -69,6 +68,10 @@ After the containers are up and running, you can access the web interfaces for i
 
 You are then invited to create the first user. This is a Cortex global administration user or superAdmin. This user account will be able to create Cortex organizations and users.
     <img width="1167" height="535" alt="image" src="https://github.com/user-attachments/assets/cc9137bc-0ad9-41d2-b645-6e924d6fa21c" />
+
+
+
+   <img width="781" height="515" alt="image" src="https://github.com/user-attachments/assets/cd28d2fe-a617-45ed-9814-f829fdb5613f" />
 
 
 Detailed documentation is available on the official StrangeBee website.(https://docs.strangebee.com/cortex/user-guides/first-start/)
