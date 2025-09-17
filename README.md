@@ -35,17 +35,17 @@ The F-SOC solution was built using multiple virtual machines on Ubuntu Server 24
   * **IP Addressing:** The following IP addresses were assigned to the VMs.
   * **Note on Firewall Rules:** While not explicitly configured in the initial setup, a robust F-SOC would require firewall rules to strictly control traffic flow between the LAN and SOC, allowing only necessary communication (e.g., logs from LAN to Wazuh).
 
-#### **Step 2: Core Platform Installation (Docker)**
+#### **Step 2: Core Platform Installation **
 
-All security tools were installed on separate Ubuntu Server 24 VMs using **Docker** for simplified deployment and management.
+All security tools were installed on separate Ubuntu Server 24 VMs.
 
 | **VM** | **IP Address** | **Resource Allocation** |
 | :--- | :--- | :--- |
 | **pfSense** | **LAN:** `192.168.2.1`\<br\>**SOC:** `192.168.1.1` | 2 vCPUs, 1MB RAM, 20GB HDD |
 | **Wazuh** | `192.168.1.54` | 2 vCPUs, 4GB RAM, 100GB HDD |
-| **Shuffle** | `192.168.1.53` | 2 vCPUs, 7GB RAM, 100GB HDD |
-| **Cortex + MISP** | `192.168.1.55` | 2 vCPUs, 7GB RAM, 100GB HDD |
-| **DFIR IRIS** | `192.168.1.57` | 2 vCPUs, 4GB RAM, 100GB HDD |
+| **Shuffle** using Docker | `192.168.1.53` | 2 vCPUs, 7GB RAM, 100GB HDD |
+| **Cortex + MISP** using Docker | `192.168.1.55` | 2 vCPUs, 7GB RAM, 100GB HDD |
+| **DFIR IRIS** using Docker| `192.168.1.57` | 2 vCPUs, 4GB RAM, 100GB HDD |
 | **Suricata** | `192.168.1.56` | 2 vCPUs, 2GB RAM, 50GB HDD |
 | **Active Directory** | `192.168.2.70` | 2 vCPUs, 4GB RAM, 50GB HDD |
 | **Windows Endpoint** | `192.168.2.71` | 2 vCPUs, 2GB RAM, 50GB HDD |
