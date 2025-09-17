@@ -277,7 +277,7 @@ The process uses the DFIR IRIS API's alerts/merge endpoint to merge a new alert 
 2. curl Command
 This curl command, executed within a Shuffle app, performs the merge operation.
 
-````Bash
+```Bash
 
 curl -X POST "https://192.168.1.57/alerts/merge" \
   -H "Authorization: Bearer API key For Your IRIS" \
@@ -290,5 +290,12 @@ curl -X POST "https://192.168.1.57/alerts/merge" \
   "assets_import_list": []
 }'
 ```
+
+<img width="1197" height="688" alt="image" src="https://github.com/user-attachments/assets/d0d7f9e2-ba9d-4317-851b-f3b232763eb0" />
+<img width="1120" height="217" alt="image" src="https://github.com/user-attachments/assets/ae94ad01-93e3-4c90-aaf7-24848301dd3e" />
+<img width="1525" height="749" alt="image" src="https://github.com/user-attachments/assets/84fa42da-e668-4e41-8c5f-43f7c6279bfa" />
+<img width="1552" height="797" alt="image" src="https://github.com/user-attachments/assets/686dcf63-5689-4d47-b7c2-48b76b05c518" />
+
+
 
 
