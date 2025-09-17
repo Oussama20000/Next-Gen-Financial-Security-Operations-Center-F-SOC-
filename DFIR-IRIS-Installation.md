@@ -55,3 +55,4 @@ After the containers have been started, you can access the DFIR IRIS web interfa
 
     <img width="1920" height="891" alt="image" src="https://github.com/user-attachments/assets/6a6c266f-cd44-44d0-b737-0bed58df50bb" />
 
+Detailed documentation is available on the official DFIR-IRIS website. (https://docs.dfir-iris.org/getting_started/)
