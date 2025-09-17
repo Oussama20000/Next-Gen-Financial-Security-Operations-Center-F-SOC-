@@ -50,5 +50,9 @@ Before installing Shuffle, configure the system to ensure the database runs smoo
 #### **4. After installation**
 
 After installation, go to http://localhost:3001 (or your servername - https is on port 3443)
-
     <img width="740" height="599" alt="image" src="https://github.com/user-attachments/assets/a2ea1051-ee0d-4030-8f02-dc82c5f45983" />
+
+
+Detailed documentation is available on the official Shuffle website. (https://shuffler.io/docs/configuration/)
+
+
