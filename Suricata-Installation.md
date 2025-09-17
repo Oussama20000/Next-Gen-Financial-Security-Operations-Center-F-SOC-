@@ -37,6 +37,10 @@ sudo nano /etc/suricata/suricata.yaml
 ```
 
   * Locate the `af-packet` section and ensure it is configured to listen on the `ens37` interface. You may need to uncomment the `- interface: ens37` line.
+    
+    <img width="522" height="203" alt="image" src="https://github.com/user-attachments/assets/89e3b089-303a-4299-b16e-58a8641c1291" />
+    
+
 
 #### **5. Start and Test Service**
 
