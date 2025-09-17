@@ -82,7 +82,7 @@ curl -k -u admin:<ADMIN_PASSWORD> https://<WAZUH_INDEXER_IP>:9200
 
 The output should show details of your Wazuh cluster, confirming that the installation was successful.
 
-To check the status of the services, you can use the following commands:
+#### **Step 7: To check the status of the services, you can use the following commands:
 
 ```bash
 sudo systemctl status wazuh-dashboard
@@ -94,4 +94,10 @@ sudo systemctl status wazuh-indexer
 <img width="810" height="140" alt="image" src="https://github.com/user-attachments/assets/2a8ceaa9-59fe-4710-bada-c38a44ea8d1b" />
 <img width="826" height="127" alt="image" src="https://github.com/user-attachments/assets/cf689e8a-e7ba-40d0-9bae-4674293beab2" />
 
+
+#### **Step 8: Interface Wazuh
+
+Once the installation is complete, you need to connect using https://<server_IP_address>.
+
+<img width="859" height="698" alt="image" src="https://github.com/user-attachments/assets/cfbb5424-502c-4ab9-8fb3-756fd332e8b6" />
 
