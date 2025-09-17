@@ -32,10 +32,10 @@ DFIR IRIS is composed of five separate Docker services. The easiest way to insta
     openssl rand -base64 64
   ```
 
-   * POSTGRES_PASSWORD: The password for the PostgreSQL user.
-   * POSTGRES_ADMIN_PASSWORD: The password for the database administrator.
-   * IRIS_SECRET_KEY: A key used by Flask to secure the session cookies.
-   * IRIS_SECURITY_PASSWORD_SALT: A unique salt for password encryption in the database.
+    * POSTGRES_PASSWORD: The password for the PostgreSQL user.
+    * POSTGRES_ADMIN_PASSWORD: The password for the database administrator.
+    * IRIS_SECRET_KEY: A key used by Flask to secure the session cookies.
+    * IRIS_SECURITY_PASSWORD_SALT: A unique salt for password encryption in the database.
    
   * **Pull and Start the Containers:**
     Pull the necessary Docker containers and start the application. The `-d` flag runs the containers in detached mode.
