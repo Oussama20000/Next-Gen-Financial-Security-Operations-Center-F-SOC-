@@ -3,10 +3,11 @@
 This guide provides a detailed, step-by-step walkthrough of the **Wazuh** installation on a Debian-based Linux system.
 
 #### **Prerequisites
-A clean Ubuntu Server 24 instance.
-IP Address: 192.168.1.54
-Resource Allocation: 2 vCPUs, 4GB RAM, 100GB HDD
-Dependencies: Docker and Docker Compose must be installed on your server.
+    
+    * A clean Ubuntu Server 24 instance.
+    * IP Address: 192.168.1.54
+    * Resource Allocation: 2 vCPUs, 4GB RAM, 100GB HDD
+    * Dependencies: Docker and Docker Compose must be installed on your server.
 
 #### **Step 1: System and Repository Setup**
 
