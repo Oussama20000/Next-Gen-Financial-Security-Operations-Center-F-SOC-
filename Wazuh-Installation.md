@@ -1,7 +1,3 @@
-I will format the Wazuh installation guide you provided into a more professional and well-structured document in English.
-
------
-
 ### **Wazuh Installation Guide**
 
 This guide provides a detailed, step-by-step walkthrough of the **Wazuh** installation on a Debian-based Linux system.
@@ -100,4 +96,9 @@ sudo systemctl status wazuh-indexer
 Once the installation is complete, you need to connect using https://<server_IP_address>.
 
 <img width="859" height="698" alt="image" src="https://github.com/user-attachments/assets/cfbb5424-502c-4ab9-8fb3-756fd332e8b6" />
+
+
+
+Detailed documentation is available on the official Wazuh website.
+https://documentation.wazuh.com/current/installation-guide/index.html
 
