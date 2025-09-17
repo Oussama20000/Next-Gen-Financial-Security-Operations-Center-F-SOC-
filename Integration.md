@@ -138,9 +138,13 @@ Within Shuffle, dedicated apps and custom Python scripts are used to connect to 
 
 **Custom Python Scripts:** Shuffle also runs custom scripts for specific tasks, such as:
 
+**I WorkFlow**
+
 **Nmap Scan Check**
 
 This script is used in a Shuffle workflow to check if a Suricata alert for an Nmap scan originates from a trusted IP address.
+
+<img width="440" height="121" alt="image" src="https://github.com/user-attachments/assets/ddb71a1e-992c-46e8-8d1e-6635086f7043" />
 
 ```python
 import json
@@ -170,7 +174,68 @@ else:
 print(json.dumps(result))
 ```
 
+<img width="477" height="551" alt="image" src="https://github.com/user-attachments/assets/76d66e50-bfd6-4c48-98e8-7d6b6c78a4fd" />
 
+**Creating an Alert from Suricata**
+
+This JSON template defines the structure for a comprehensive alert, using data from a Suricata alert as its source. This ensures all relevant details are captured and forwarded for analysis.
+
+
+```JSON
+
+{
+  "alert_title": "$verify_ip.#.message.description",
+  "alert_description": "Alert detected from $suricata_events.valid.#.rule.description from $suricata_events.valid.#.data.flow.src_ip. Rule ID: $suricata_events.valid.#.rule.id. Event source: $suricata_events.valid.#.location from Agent $suricata_events.valid.#.agent.name",
+  "alert_source": "wazuh",
+  "alert_source_ref": "RuleId: $suricata_events.valid.#.rule.id",
+  "alert_severity_id": "$verify_ip.#.message.severity",
+  "alert_status_id": "5",
+  "alert_source_event_time": "$verify_ip.#.message.timestamp",
+  "alert_note": "Suricata aggressive scan detected from $suricata_events.valid.#.data.flow.src_ip. Event collected from $suricata_events.valid.#.location",
+  "alert_tags": ["T1046", "T1069"],
+  "alert_customer_id": "1",
+  "alert_classification_id": "2",
+  "alert_source_content": "wazuh"
+}
+```
+**Creating a Case from Suricata**
+
+<img width="335" height="717" alt="image" src="https://github.com/user-attachments/assets/e42777ed-f677-4510-8264-f8c80aebf913" />
+
+**Merging Alerts with Cases (DFIR IRIS API)**
+
+This is the final step in the automated workflow, performed by a Shuffle app. It ensures that related alerts are not created as new cases but are instead merged into a single, comprehensive case for the analyst.
+
+1. API Endpoint
+The process uses the DFIR IRIS API's alerts/merge endpoint to merge a new alert with an existing case.
+
+2. curl Command
+This curl command, executed within a Shuffle app, performs the merge operation.
+
+```Bash
+
+curl -X POST "https://192.168.1.57/alerts/merge/$create_case_suricata.#.body.data.alert_id" \
+  -H "Authorization: Bearer API key For Your IRIS" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "target_case_id": "$create_case_suricata.#.body.data.case_id",
+  "import_as_event": false,
+  "note": "",
+  "iocs_import_list": [],
+  "assets_import_list": []
+}'
+```
+**Add IOC to the Case**
+
+<img width="338" height="660" alt="image" src="https://github.com/user-attachments/assets/96778fd0-8db8-4b2d-b4ff-e135549238c5" />
+
+**Run Cortex Analyzer**
+
+<img width="334" height="725" alt="image" src="https://github.com/user-attachments/assets/987fcb32-cf9b-4229-8cf7-30646976d71a" />
+<img width="330" height="584" alt="image" src="https://github.com/user-attachments/assets/ca19b966-ec75-404c-978c-2f8688e922b6" />
+
+
+**II WorkFlow**
 
 <img width="495" height="172" alt="image" src="https://github.com/user-attachments/assets/4640d385-f462-4331-a410-cf8868b37ef1" />
 
@@ -279,11 +344,11 @@ This curl command, executed within a Shuffle app, performs the merge operation.
 
 ```Bash
 
-curl -X POST "https://192.168.1.57/alerts/merge" \
+curl -X POST "https://192.168.1.57/alerts/merge/$create_case_mimikatz.#.body.data.alert_id" \
   -H "Authorization: Bearer API key For Your IRIS" \
   -H "Content-Type: application/json" \
   -d '{
-  "target_case_id": "$create_case_suricata.#.body.data.case_id",
+  "target_case_id": "$create_case_mimikatz.#.body.data.case_id",
   "import_as_event": false,
   "note": "",
   "iocs_import_list": [],
