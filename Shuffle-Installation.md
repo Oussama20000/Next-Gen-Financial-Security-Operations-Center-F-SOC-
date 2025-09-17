@@ -71,3 +71,5 @@ You are then invited to create the first user. This is a Cortex global administr
     <img width="1167" height="535" alt="image" src="https://github.com/user-attachments/assets/cc9137bc-0ad9-41d2-b645-6e924d6fa21c" />
 
 
+Detailed documentation is available on the official StrangeBee website.(https://docs.strangebee.com/cortex/user-guides/first-start/)
+Detailed documentation is available on the official MISP website.(https://www.misp-project.org/download/)
