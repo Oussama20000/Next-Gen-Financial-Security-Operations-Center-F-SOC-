@@ -1,5 +1,7 @@
 
 <img width="1585" height="882" alt="image" src="https://github.com/user-attachments/assets/53767513-4f26-4fcd-a5a1-4569f739f0e9" />
+<img width="1583" height="678" alt="image" src="https://github.com/user-attachments/assets/27aac899-4041-446b-b715-6d6fbf32fa8c" />
+
 
 ### **F-SOC Integration & Automation Pipeline**
 
@@ -370,6 +372,233 @@ curl -X POST "https://192.168.1.57/alerts/merge/$create_case_mimikatz.#.body.dat
 <img width="1120" height="217" alt="image" src="https://github.com/user-attachments/assets/ae94ad01-93e3-4c90-aaf7-24848301dd3e" />
 <img width="1525" height="749" alt="image" src="https://github.com/user-attachments/assets/84fa42da-e668-4e41-8c5f-43f7c6279bfa" />
 <img width="1552" height="797" alt="image" src="https://github.com/user-attachments/assets/686dcf63-5689-4d47-b7c2-48b76b05c518" />
+
+
+**III WorkFlow**
+<img width="1583" height="678" alt="image" src="https://github.com/user-attachments/assets/0a59909c-bea2-4cd1-aa12-68a3a2240786" />
+
+lets begin with 
+ <img width="281" height="231" alt="image" src="https://github.com/user-attachments/assets/52288e1e-57f6-4240-a629-a25139547471" />
+1. Filter with that rules_id
+ <img width="334" height="716" alt="image" src="https://github.com/user-attachments/assets/9c7bffd5-2b37-402a-a036-d8e06b67a433" />
+2. Custom Python Script: Alert Generation
+
+
+This script, used in a Shuffle workflow, takes a raw alert from Wazuh and formats it into a clear, critical alert message. It uses conditional logic to check the rule_id and provides a specific, detailed message for each type of threat.
+
+Script Functionality
+The script pulls dynamic information such as the user, timestamp, IP address, and rule ID from the incoming alert. It then uses if statements to match specific rule IDs and print a unique, formatted alert message.
+
+91837: Powershell code execution detected.
+
+100202: Mimikatz execution attempt detected.
+
+100206: Powershell download and execute detected.
+
+92057: Powershell Encoded Command detected.
+
+```Python
+
+import time
+import json
+
+timestamp = "$filter_powershell_cmd.valid.#.timestamp"
+user = "$filter_powershell_cmd.valid.#.agent.name"
+rule_id = "$filter_powershell_cmd.valid.#.rule.id"
+ip = "$filter_powershell_cmd.valid.#.agent.ip"
+
+# Default output
+output = {}
+
+if rule_id == "91837":
+    print("CRITICAL ALERT: PowerShell code execution detected! \n user:" + user + "\n Time:" + timestamp + "\nRule_id:" + rule_id + "\nIp Address:" + ip + "\nReason: A malicious user can download and execute a malicious payload using this method")
+elif rule_id == "100202":
+    print("CRITICAL ALERT: Mimikatz execution attempt! \n user:" + user + "\nTime:" + timestamp + "\nRule_id:" + rule_id + "\nIp Address:" + ip + "\n Reason: Mimikatz credential dumping attempts ")
+elif rule_id == "100206":
+    print("CRITICAL ALERT: PowerShell download and execute detected! \n user:" + user + "\n Time:" + timestamp + "\nRule_id:" + rule_id + "\nIp Address:" + ip + "\nReason: SharpHound reconnaissance tool executed ")
+elif rule_id == "92057":
+    print("CRITICAL ALERT: PowerShell Encoded Command detected! \n user:" + user + "\nTime:" + timestamp + "\nRule_id:" + rule_id + "\nIp Address:" + ip + "\n Reason: Suspicious command line activity using Base64 encoding for obfuscation This is a common technique for bypassing security controls. ")
+else:
+    print("")
+```
+3. Create an Alert in Discord
+
+<img width="875" height="756" alt="image" src="https://github.com/user-attachments/assets/5c6625ba-9344-46c4-b66e-f4d05e637fc0" />
+
+
+4. Results
+   <img width="1045" height="665" alt="image" src="https://github.com/user-attachments/assets/430b998b-26c2-4953-9cea-e516af1c649d" />
+
+**IV WorkFlow**
+
+<img width="213" height="415" alt="image" src="https://github.com/user-attachments/assets/adc5fd06-3dd9-419a-9dc0-5c3d89102527" />
+
+1. Filter with that rules_id
+   <img width="331" height="722" alt="image" src="https://github.com/user-attachments/assets/3db4522c-7862-440b-821a-6f80d5db932c" />
+
+3. Custom Python Script: Privilege Escalation Detection Script
+
+This Python script is a key component of your automated response workflow. It is designed to detect and take action on unauthorized privilege escalation.
+
+Functionality
+The script first checks if a user is part of a trusted group and if the action originates from a trusted IP address. It then makes an intelligent decision:
+
+If Trusted: It generates a notification message to log the action but does not take any automated action.
+
+If Not Trusted: It generates a critical alert and sets a flag to automatically remove the user from the privileged group.
+
+Script Code
+```Python
+
+# Values you already extracted
+source_ip = "$filter_privilage_escalation.valid.#.agent.ip"
+admin_account = "$filter_privilage_escalation.valid.#.data.win.eventdata.subjectUserName"
+username = "$filter_privilage_escalation.valid.#.data.win.eventdata.memberName"
+
+# === CONFIG === #
+TRUSTED_ADMINS = ["Administrator", "TrustedAdminUser"]
+TRUSTED_IP_PREFIXES = ["192.168.1.70"]
+
+def is_trusted(admin_account, ip):
+    # Check if admin is trusted
+    if admin_account not in TRUSTED_ADMINS:
+        return False
+
+    # Check IP starts with trusted subnet
+    for prefix in TRUSTED_IP_PREFIXES:
+        if ip.startswith(prefix):
+            return True
+    return False
+
+# Decide action
+if is_trusted(admin_account, source_ip):
+    action = "allow"
+    messageNotif = f"✅ Trusted change: {username} added by {admin_account} from {source_ip}"
+    remove_user = "false"
+
+else:
+    action = "remove"
+    messageNotif = f"⚠️ Unauthorized change: {username} added by {admin_account} from {source_ip}"
+    # Extract the CN part
+    cn_part = username.split('=')[1]
+    # Take the first word (first name) and capitalize it
+    first_name = cn_part.split(' ')[0].capitalize()
+    remove_user = "true"
+
+ru = {}
+if action == "remove":
+    ru = {
+        "username": username,
+        "admin_account": admin_account,
+        "source_ip": source_ip,
+        "action": "remove",
+        "name": first_name,
+        "remove_user": "true"
+    }
+else:
+    # Do not output anything if trusted
+    ru = {}
+
+output = {
+    "messageNotif": messageNotif,
+    "remove_user": remove_user,
+    "ru": ru
+}
+
+print(output)
+```
+
+
+4. Custom Python Script: User Removal Script
+   
+This script, used in a Shuffle workflow, processes the output from the previous privilege escalation script. Its primary function is to extract and format the username for a user removal action.
+
+Script Functionality
+The script takes two variables from the previous workflow's output: the full member name and the remove_user flag. It then extracts the Common Name (CN) part from the full member name, capitalizes the first name, and prepares it for the user removal action.
+
+```Python
+
+member_name_variable = "$verify_ip_and_user.#.message.ru.username"
+remove_user = "$verify_ip_and_user.#.message.remove_user"
+
+#Extract the CN part
+cn_part = member_name_variable.split('=')[1]
+#Take the first word (first name) and capitalize it
+first_name = cn_part.split(' ')[0].capitalize()
+
+print(first_name)
+```
+5. Create an Alert in discord
+   <img width="336" height="717" alt="image" src="https://github.com/user-attachments/assets/df9509f3-dcea-4a87-9c90-25e315b42ee3" />
+
+6. remove use from Group
+   <img width="336" height="719" alt="image" src="https://github.com/user-attachments/assets/5b78444c-1d47-44d3-a2a1-d38fe674a4f0" />
+
+7. Create an Alert in Discord
+   <img width="333" height="720" alt="image" src="https://github.com/user-attachments/assets/97faa09c-1161-410b-97eb-e2e8a129aaa8" />
+
+8. Results
+<img width="548" height="62" alt="image" src="https://github.com/user-attachments/assets/c5a50255-6cf7-4cf0-b8ff-e84d7d58f476" />
+
+
+**V WorkFlow**
+
+<img width="199" height="345" alt="image" src="https://github.com/user-attachments/assets/85173c26-05ec-4818-8079-75e3f329856e" />
+
+1. Filter with that rules_id
+
+<img width="333" height="712" alt="image" src="https://github.com/user-attachments/assets/7b741d51-e7bd-4e68-9721-e311d9789402" />
+
+3. Custom Python Script: Username Extraction Script
+
+This command, used in a Shuffle workflow, is a concise and powerful way to extract a clean username from a log entry. It's a key step for ensuring that a script receives a usable username without a domain or other unnecessary characters.
+
+Command Functionality
+The command uses a series of pipes to perform the extraction:
+
+It starts by echoing the full user field.
+
+The first rev command reverses the string.
+
+The cut command then isolates the first part of the reversed string, using the backslash (\) as a delimiter.
+
+The second rev command reverses the result back to its original order, leaving only the username.
+
+```Bash
+echo $exec_all_fields.data.win.eventdata.user | rev | cut -d'\' -f1 | rev
+```
+
+4. Custom Python Script: SAM Credential Dumping Alert Script
+
+This script, used in a Shuffle workflow, is a valuable addition to your automation. It is specifically designed to detect and format a critical alert for SAM credential dumping, a key threat in Windows environments.
+
+Script Functionality
+The script checks for a specific rule_id (92026). When this rule is triggered, the script pulls key information like the user, timestamp, and IP address from the alert and generates a formatted message for a security team to review.
+
+```Python
+
+timestamp = "$sam.valid.#.timestamp"
+user = "$sam.valid.#.data.win.eventdata.user"
+rule_id = "$sam.valid.#.rule.id"
+ip = "$sam.valid.#.agent.ip"
+
+# Default output
+output = {}
+
+if rule_id == "92026":
+    print("CRITICAL ALERT: SAM credential dumping detected! \n User: "+user+"\n Time: "+timest
+```
+5. Disable User
+<img width="336" height="719" alt="image" src="https://github.com/user-attachments/assets/58face2e-4b7f-4309-916d-ef2764f23844" />
+
+6. Create an Alert in Discord
+<img width="334" height="722" alt="image" src="https://github.com/user-attachments/assets/c1a76a0d-6d05-4ac0-aaae-1c490cf871b0" />
+
+
+
+
+
+
 
 
 
