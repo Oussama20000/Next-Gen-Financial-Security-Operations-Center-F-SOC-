@@ -52,7 +52,7 @@ All security tools were installed on separate Ubuntu Server 24 VMs.
 
 #### **Step 3: Wazuh Agent Deployment**
 
-Wazuh agents were deployed on the **Windows Endpoint** and **Active Directory** machines. The agents were configured to send logs and telemetry to the Wazuh server in the SOC network. You can add an image or a link to a guide on agent installation here.
+Wazuh agents were deployed on the **Windows Endpoint** and **Active Directory** machines. The agents were configured to send logs and telemetry to the Wazuh server in the SOC network.
 
 #### **Step 4: Suricata IDS Setup**
 
@@ -67,8 +67,6 @@ The core of the F-SOC solution is a robust automation pipeline orchestrated by *
 #### **Wazuh to Shuffle (Webhooks)**
 
 Wazuh is configured to send alerts to Shuffle using webhooks based on specific custom rule IDs. When an alert with one of these rule IDs is triggered, Shuffle receives the alert data and begins its automated workflow.
-
-**Custom Rules:** You can add the code for your custom Wazuh rules here.
 
 #### **Shuffle to DFIR IRIS (API)**
 
