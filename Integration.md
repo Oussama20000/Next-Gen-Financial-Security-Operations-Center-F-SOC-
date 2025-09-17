@@ -170,6 +170,10 @@ else:
 print(json.dumps(result))
 ```
 
+
+
+<img width="495" height="172" alt="image" src="https://github.com/user-attachments/assets/4640d385-f462-4331-a410-cf8868b37ef1" />
+
 **Mimikatz Hash Extraction**
 
 This script is the first step in the Mimikatz detection workflow. It takes the alert data sent from Wazuh and uses a regular expression to extract the **SHA256 hash** of the detected file.
@@ -213,7 +217,7 @@ url = f"https://www.virustotal.com/api/v3/files/{sha256}"
 # Replace with your VirusTotal API key
 headers = {
     "accept": "application/json",
-    "x-apikey": "1c1d6b812cdcb72dba6c60f567a1d3afaa7781a549125db1526d0e04edaa6182"
+    "x-apikey": "api_key_for_your_virusTotal"
 }
 
 response = requests.get(url, headers=headers)
@@ -221,3 +225,70 @@ response = requests.get(url, headers=headers)
 # Print the full JSON response
 print(response.json())
 ```
+<img width="534" height="225" alt="image" src="https://github.com/user-attachments/assets/39617201-527e-4cea-9fa7-057639056669" />
+
+**Creating a Rich Alert**
+This JSON template, used within a Shuffle app, defines the structure for a comprehensive alert. It consolidates information from multiple sources—including the original Wazuh alert and the VirusTotal analysis—into a single, rich data object.
+
+```JSON
+
+{
+  "alert_title": "$schange_me.title",
+  "alert_description": "Mimikatz detected on host: $schange_me.text.win.system.computer via user: $schange_me.text.win.eventdata.user & The VirusTotal scan's result is of 70. Mimicatz activity detection on the process ID : $schange_me.text.win.system.processID in the Path : $schange_me.text.win.eventdata.image The SHA of The File Is $extruct_sha256.#.message.sha256",
+  "alert_source": "shuffle",
+  "alert_source_ref": "RuleId: 100004",
+  "alert_source_link": "https://www.virustotal.com/gui/file/$extruct_sha256.#.message.sha256",
+  "alert_severity_id": "5",
+  "alert_status_id": "5",
+  "alert_source_event_time": "$mimikatz.event.valid.#.data.win.system.systemTime",
+  "alert_note": "Mimikatz detected on host:$schange_me.text.win.system.computer via user: $schange_me.text.win.eventdata.user & The VirusTotal scan's result is of 70. Mimicatz activity detection on the process ID : $schange_me.text.win.system.processID, alert_tags : [\"T1003\"], alert_customer_id: \"1\", alert_classification_id\": 2, alert_source_content\": \"shuffle\"}",
+  "alert_tags": [
+    "T1003"
+  ],
+  "alert_customer_id": "1",
+  "alert_classification_id": "2"
+}
+```
+
+**Case Creation**
+This JSON template, used within a Shuffle app, is used to automatically create a new case in DFIR IRIS based on a Wazuh alert.
+
+```JSON
+
+{
+  "case_customer": "$create_alert_mimikatz.#.body.data.customer_id",
+  "case_description": "$mimikatz_event.valid.#.rule.description",
+  "case_name": "$create_alert_mimikatz.#.body.data.alert_title",
+  "case_soc_id": "shuffleS",
+  "cid": "${cid}"
+}
+```
+<img width="423" height="123" alt="image" src="https://github.com/user-attachments/assets/c592b3d1-e728-44f2-afdd-b13de3c052ad" />
+
+
+
+**Merging Alerts with Cases (DFIR IRIS API)**
+
+This is the final step in the automated workflow, performed by a Shuffle app. It ensures that related alerts are not created as new cases but are instead merged into a single, comprehensive case for the analyst.
+
+1. API Endpoint
+The process uses the DFIR IRIS API's alerts/merge endpoint to merge a new alert with an existing case.
+
+2. curl Command
+This curl command, executed within a Shuffle app, performs the merge operation.
+
+````Bash
+
+curl -X POST "https://192.168.1.57/alerts/merge" \
+  -H "Authorization: Bearer API key For Your IRIS" \
+  -H "Content-Type: application/json" \
+  -d '{
+  "target_case_id": "$create_case_suricata.#.body.data.case_id",
+  "import_as_event": false,
+  "note": "",
+  "iocs_import_list": [],
+  "assets_import_list": []
+}'
+```
+
+
