@@ -88,9 +88,9 @@ Shuffle uses dedicated apps to connect to **Cortex** and **MISP** via API keys.
 
 For a detailed breakdown of the installation and configuration of each component, please refer to the related repositories:
 
-[Wazuh-Installation.md](https://github.com/Oussama20000/Next-Gen-Financial-Security-Operations-Center-F-SOC-/blob/main/Wazuh-Installation.md)
-[Shuffle-Installation.md](https://github.com/Oussama20000/Next-Gen-Financial-Security-Operations-Center-F-SOC-/blob/main/Shuffle-Installation.md)
-[DFIR-IRIS-Installation.md](https://github.com/Oussama20000/Next-Gen-Financial-Security-Operations-Center-F-SOC-/blob/main/DFIR-IRIS-Installation.md)
-[MISP+Cortex-Installation.md](https://github.com/Oussama20000/Next-Gen-Financial-Security-Operations-Center-F-SOC-/blob/main/MISP%2BCortex-Installation.md)
-[Suricata-Installation.md](https://github.com/Oussama20000/Next-Gen-Financial-Security-Operations-Center-F-SOC-/blob/main/Suricata-Installation.md)
-[Integration.md](https://github.com/Oussama20000/Next-Gen-Financial-Security-Operations-Center-F-SOC-/blob/main/Integration.md)
+* [Wazuh-Installation.md](https://github.com/Oussama20000/Next-Gen-Financial-Security-Operations-Center-F-SOC-/blob/main/Wazuh-Installation.md)
+* [Shuffle-Installation.md](https://github.com/Oussama20000/Next-Gen-Financial-Security-Operations-Center-F-SOC-/blob/main/Shuffle-Installation.md)
+* [DFIR-IRIS-Installation.md](https://github.com/Oussama20000/Next-Gen-Financial-Security-Operations-Center-F-SOC-/blob/main/DFIR-IRIS-Installation.md)
+* [MISP+Cortex-Installation.md](https://github.com/Oussama20000/Next-Gen-Financial-Security-Operations-Center-F-SOC-/blob/main/MISP%2BCortex-Installation.md)
+* [Suricata-Installation.md](https://github.com/Oussama20000/Next-Gen-Financial-Security-Operations-Center-F-SOC-/blob/main/Suricata-Installation.md)
+* [Integration.md](https://github.com/Oussama20000/Next-Gen-Financial-Security-Operations-Center-F-SOC-/blob/main/Integration.md)
