@@ -1,9 +1,9 @@
+### **Integration & Automation Guide**
+
 
 <img width="1585" height="882" alt="image" src="https://github.com/user-attachments/assets/53767513-4f26-4fcd-a5a1-4569f739f0e9" />
 <img width="1583" height="678" alt="image" src="https://github.com/user-attachments/assets/27aac899-4041-446b-b715-6d6fbf32fa8c" />
 
-
-### **F-SOC Integration & Automation Pipeline**
 
 This guide details the custom rules and configurations that connect Wazuh to Shuffle, creating a fully automated security pipeline.
 
