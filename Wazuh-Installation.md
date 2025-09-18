@@ -200,5 +200,9 @@ Once this configuration is added, the Wazuh agent must be restarted for the chan
 
 <img width="766" height="526" alt="image" src="https://github.com/user-attachments/assets/92da9003-9ef1-47c5-87c9-2fd8947f97ec" />
 
+<img width="1918" height="146" alt="image" src="https://github.com/user-attachments/assets/9c5e0bd9-f29f-41c3-9fee-216edad8dc53" />
+
+<img width="1118" height="519" alt="image" src="https://github.com/user-attachments/assets/d8ba9064-a566-46e4-bed5-b12abbe86a33" />
+
 
 
