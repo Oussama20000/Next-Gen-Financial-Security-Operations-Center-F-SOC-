@@ -145,6 +145,9 @@ Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.12.0
 NET START WazuhSvc
 ```
 
+<img width="815" height="601" alt="image" src="https://github.com/user-attachments/assets/a9e6faf8-cd0c-4fbc-b87c-e22cf019a61a" />
+
+
 
 
 
