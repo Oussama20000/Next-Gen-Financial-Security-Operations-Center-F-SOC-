@@ -109,3 +109,44 @@ Once the installation is complete, you need to connect using https://<server_IP_
 Detailed documentation is available on the official Wazuh website.
 https://documentation.wazuh.com/current/installation-guide/index.html
 
+
+### **Wazuh-Agents Installation Guide**
+
+1. Suricata
+   
+<img width="1919" height="971" alt="image" src="https://github.com/user-attachments/assets/6bca1d13-a197-438f-a72c-1a27d2bac5d2" />
+
+and then
+
+
+```bash
+wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.12.0-1_amd64.deb && sudo WAZUH_MANAGER='192.168.1.34' WAZUH_AGENT_NAME='Suricata' dpkg -i ./wazuh-agent_4.12.0-1_amd64.deb
+```
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable wazuh-agent
+sudo systemctl start wazuh-agent
+```
+
+<img width="959" height="226" alt="image" src="https://github.com/user-attachments/assets/5d68febd-e015-42ba-9b54-85827896373e" />
+
+2. ActiveDirectory+Windows endpoint:
+ 
+   <img width="1919" height="928" alt="image" src="https://github.com/user-attachments/assets/b5387671-69c2-44f3-a6dd-c96f801d56fa" />
+
+and then 
+
+```bash
+Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.12.0-1.msi -OutFile $env:tmp\wazuh-agent.msi;msiexec.exe /i $env:tmp\wazuh-agent.msi WAZUH_MANAGER='192.168.1.54' WAZUH_AGENT_NAME='ActiveDirectory'
+```
+
+```bash
+NET START WazuhSvc
+```
+
+
+
+
+
+
