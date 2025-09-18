@@ -1,7 +1,3 @@
-Here is the Cortex and MISP installation guide, formatted exactly as you requested.
-
------
-
 ### **Cortex & MISP Installation Guide**
 
 This guide provides the steps to install and configure **Cortex** and **MISP** on a single Ubuntu Server 24 VM using Docker.
