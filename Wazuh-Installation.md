@@ -109,47 +109,57 @@ Once the installation is complete, you need to connect using https://<server_IP_
 Detailed documentation is available on the official Wazuh website.
 https://documentation.wazuh.com/current/installation-guide/index.html
 
+Wazuh Agents: Installation & Configuration Guide
+This section provides a step-by-step guide on how the Wazuh agents were deployed and configured on the endpoints within the LAN VLAN. The agents were installed on both Linux and Windows machines to ensure comprehensive security telemetry collection.
 
-### **Wazuh-Agents Installation Guide**
+1. Suricata (Linux Endpoint)
+The Wazuh agent was installed on the Suricata machine to forward its logs and security events to the central Wazuh manager.
 
-1. Suricata
-   
-<img width="1919" height="971" alt="image" src="https://github.com/user-attachments/assets/6bca1d13-a197-438f-a72c-1a27d2bac5d2" />
+Download and Install the Agent
+Use the following command to download the Wazuh agent package and install it in a single step. This command automatically configures the agent to connect to the Wazuh manager's IP address.
 
-and then
+<img width="1919" height="971" alt="image" src="https://github.com/user-attachments/assets/6bca1d13-a197-438f-a72c-1a27d2bac5d2">
 
+Bash
 
-```bash
 wget https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.12.0-1_amd64.deb && sudo WAZUH_MANAGER='192.168.1.34' WAZUH_AGENT_NAME='Suricata' dpkg -i ./wazuh-agent_4.12.0-1_amd64.deb
-```
+WAZUH_MANAGER: Set to the IP address of the Wazuh server on the SOC network.
 
-```bash
+WAZUH_AGENT_NAME: The name assigned to the Suricata agent in the Wazuh dashboard.
+
+Start the Agent Service
+Execute these commands to start the Wazuh agent service and enable it to run automatically on system boot.
+
+Bash
+
 sudo systemctl daemon-reload
 sudo systemctl enable wazuh-agent
 sudo systemctl start wazuh-agent
-```
+<img width="959" height="226" alt="image" src="https://github.com/user-attachments/assets/5d68febd-e015-42ba-9b54-85827896373e">
 
-<img width="959" height="226" alt="image" src="https://github.com/user-attachments/assets/5d68febd-e015-42ba-9b54-85827896373e" />
+2. Active Directory & Windows Endpoints
+The Wazuh agent was deployed on both the Active Directory server and other Windows endpoints to monitor system activity, security logs, and integrity of critical files.
 
-2. ActiveDirectory+Windows endpoint:
- 
-   <img width="1919" height="928" alt="image" src="https://github.com/user-attachments/assets/b5387671-69c2-44f3-a6dd-c96f801d56fa" />
+Download and Install the Agent
+Open a PowerShell terminal as an administrator and run the following command to download and install the agent silently.
 
-and then 
+<img width="1919" height="928" alt="image" src="https://github.com/user-attachments/assets/b5387671-69c2-44f3-a6dd-c96f801d56fa">
 
-```bash
+Bash
+
 Invoke-WebRequest -Uri https://packages.wazuh.com/4.x/windows/wazuh-agent-4.12.0-1.msi -OutFile $env:tmp\wazuh-agent.msi;msiexec.exe /i $env:tmp\wazuh-agent.msi WAZUH_MANAGER='192.168.1.54' WAZUH_AGENT_NAME='ActiveDirectory'
-```
+WAZUH_MANAGER: The IP address of the Wazuh server.
 
-```bash
+WAZUH_AGENT_NAME: The name assigned to the agent (e.g., ActiveDirectory).
+
+Start the Agent Service
+After a successful installation, the agent service is started using the NET START command.
+
+Bash
+
 NET START WazuhSvc
-```
+<img width="815" height="601" alt="image" src="https://github.com/user-attachments/assets/a9e6faf8-cd0c-4fbc-b87c-e22cf019a61a">
 
-<img width="815" height="601" alt="image" src="https://github.com/user-attachments/assets/a9e6faf8-cd0c-4fbc-b87c-e22cf019a61a" />
-
-
-
-
-
+<img width="1919" height="716" alt="image" src="https://github.com/user-attachments/assets/5fb9726c-7457-4518-9638-44dd8004d0e7">
 
 
