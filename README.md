@@ -83,3 +83,14 @@ Shuffle uses dedicated apps to connect to **Cortex** and **MISP** via API keys.
 
   * **Cortex:** When a case is created, Shuffle sends IOCs (IPs, hashes, domains) to Cortex for automated analysis using its analyzers (e.g., VirusTotal, AbuseIPDB). The results are then added back to the IRIS case to enrich the alert.
   * **MISP:** MISP is used to proactively search for IOCs related to an alert. The workflow queries MISP through a Shuffle app, and the returned information is used to generate a report within IRIS.
+
+#### **Additional Repositories**
+
+For a detailed breakdown of the installation and configuration of each component, please refer to the related repositories:
+
+[Wazuh-Installation.md](https://github.com/Oussama20000/Next-Gen-Financial-Security-Operations-Center-F-SOC-/blob/main/Wazuh-Installation.md)
+[Shuffle-Installation.md](https://github.com/Oussama20000/Next-Gen-Financial-Security-Operations-Center-F-SOC-/blob/main/Shuffle-Installation.md)
+[DFIR-IRIS-Installation.md](https://github.com/Oussama20000/Next-Gen-Financial-Security-Operations-Center-F-SOC-/blob/main/DFIR-IRIS-Installation.md)
+[MISP+Cortex-Installation.md](https://github.com/Oussama20000/Next-Gen-Financial-Security-Operations-Center-F-SOC-/blob/main/MISP%2BCortex-Installation.md)
+[Suricata-Installation.md](https://github.com/Oussama20000/Next-Gen-Financial-Security-Operations-Center-F-SOC-/blob/main/Suricata-Installation.md)
+[Integration.md](https://github.com/Oussama20000/Next-Gen-Financial-Security-Operations-Center-F-SOC-/blob/main/Integration.md)
