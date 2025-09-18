@@ -166,3 +166,39 @@ NET START WazuhSvc
 <img width="1919" height="716" alt="image" src="https://github.com/user-attachments/assets/5fb9726c-7457-4518-9638-44dd8004d0e7">
 
 
+File Integrity Monitoring (FIM) Configuration
+A crucial security layer of the F-SOC is the File Integrity Monitoring (FIM) configured within the Wazuh agents. FIM provides real-time detection of changes to critical files and directories, which is vital for detecting malware, unauthorized access, and insider threats on a financial network.
+
+The FIM configuration is managed directly on the Wazuh agent within the /var/ossec/etc/ossec.conf file. The following configuration was applied to monitor key system files and directories.
+
+Agent Configuration (ossec.conf)
+The syscheck module in the agent's configuration was used to define which files to monitor.
+
+````XML
+
+<ossec_config>
+  <syscheck>
+    <disabled>no</disabled>
+    <frequency>43200</frequency>
+    <directories recursion_level="256" check_all="yes" report_changes="yes" realtime="yes">C:\Users\Public</directories>
+    <directories recursion_level="256" check_all="yes" report_changes="yes" realtime="yes">C:\Users\Administrator\Downloads</directories>
+````
+<img width="1571" height="207" alt="image" src="https://github.com/user-attachments/assets/c38b9aa3-d55e-4f6a-9d88-ba968bed9630" />
+
+
+The <frequency> tag defines how often a full scan of the monitored directories occurs (e.g., 3600 seconds = once every hour).
+
+The <directories> tag specifies the exact path to monitor. The check_all="yes" attribute ensures that changes to permissions, ownership, and file attributes are also detected, not just content changes.
+
+The realtime="yes" attribute enables real-time monitoring of the directory, which is essential for a proactive security solution.
+
+Once this configuration is added, the Wazuh agent must be restarted for the changes to take effect.
+
+
+
+
+
+<img width="766" height="526" alt="image" src="https://github.com/user-attachments/assets/92da9003-9ef1-47c5-87c9-2fd8947f97ec" />
+
+
+
